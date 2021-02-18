@@ -51,10 +51,13 @@ function text(section) {
 function columns(section) {
     const html = section.value.map(
         item => {
-            return `
-            <div class="col-sm">
-                <p>${section.value}</p>
-            </div>`
+            return `<div class="col-sm"><p>${item}</p></div>`
         }
-    )
+    );
+    console.log(html)
+    return `
+    <section class="row">
+        ${html.join('')}
+    </section>
+    `;
 }
