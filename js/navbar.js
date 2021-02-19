@@ -1,45 +1,19 @@
-const links = [ 'home', 'about', 'resume', 'contacts'];
+const links = [
+    { href: '#home', icon: "bi-house-door", value: 'Home' }, // ВЫносим в массив похожие значения
+    { href: '#about', icon: "bi-person", value: 'About' },
+    { href: '#resume', icon: "bi-file-earmark-person", value: 'Resume' },
+    { href: '#contacts', icon: "bi-person-lines-fill", value: 'Contacts' }
+];
 
-const $nav = document.querySelector('#navbar')
+const $navbar = document.querySelector('#navbar');
+const $navbarUl = document.createElement('ul'); // создает элемент (Tag))
+$navbar.append($navbarUl); // вставляет элемент
 
-$nav.insertAdjacentHTML('beforeend', '<ul>');
-
-let newlinks = links.forEach( link => {
-    let html = '';
-
-    if ( link.type === 'home' ) {    
-        html = home(link);
-
-    } else if ( link.type === 'about' ) {
-        html = about(link);
-
-    } else if ( link.type === 'resume' ) {
-        html = resume(link);
-
-    } else if ( link.type === 'contacts' ) {
-        html = contacts(link);
-
-    };
-
-
-    $nav.insertAdjacentHTML('beforeend', html);
-
+links.forEach( link => {
+    let html = navigation(link);
+    $navbarUl.insertAdjacentHTML('beforeend', html);
 });
 
-$nav.insertAdjacentHTML('beforeend', '</ul>');
-
-function home(link) {
-    return `<li><a href="#home" class="nav-link scrollto"><i class="bi bi-house-door"></i> <span>Home</span></a></li>`;
-};
-
-function about(link) {
-    return `<li><a href="#about" class="nav-link scrollto"><i class="bi bi-person"></i> <span>About</span></a></li>`;
-};
-
-function resume(link) {
-    return `<li><a href="#resume" class="nav-link scrollto"><i class="bi bi-file-earmark-person"></i> <span>Resume</span></a></li>`;
-};
-
-function contacts(link) {
-    return `<li><a href="#contacts" class="nav-link scrollto"><i class="bi bi-person-lines-fill"></i> <span>Contacts</span></a></li>`;
+function navigation(link) {
+    return `<li><a href="${link.href}" class="nav-link scrollto"><i class="bi ${link.icon}"></i> <span>${link.value}</span></a></li>`
 };
