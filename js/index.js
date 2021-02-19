@@ -1,52 +1,52 @@
-
-const loremText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta vitae beatae nesciunt. Alias, officia consequuntur quia porro inventore aspernatur facilis vitae earum ratione nobis voluptate, sunt voluptas fugiat perferendis suscipit.';
-
+const loremText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia excepturi commodi impedit, possimus nulla vitae et ex. Quam nisi minima cum natus rem esse voluptatum laborum eveniet sequi. Quo, quibusdam.';
 const sections = [
-    { type: 'title', value: 'Hello world!' }, // объект без названия
+    { type: 'title', value: 'Hello world!' },
     { type: 'text', value: loremText },
-    { type: 'columns', value: [loremText, loremText, loremText] }
+    { type: 'columns', value: [ loremText, loremText, loremText ] },
+    { type: 'image', value: '../image/profile.jpg'}
 ];
 
-const $content = document.querySelector('#cv');  // $ был в jquery но можно не использовать
-
-sections.forEach( section => {
-    let html = '';
-
-    if (section.type === 'title') {
-        html = title(section);
-
-    } else if (section.type === 'text') {
-        html = text(section);
-
-    } else if (section.type === 'columns') {
-        html = columns(section);
-    };
-
-    $content.insertAdjacentHTML('beforeend', html); // вставляется динамический контент 
-});
+const $content = document.querySelector('#cv');
 
 function row(content) {
-    return `<section class="row">${content}</section>`
-};
+    return `<section class="row">${content}</section>`;
+}
 
 function col(content) {
-    return `<div class="col-sm">${content}</div>`
-};
+    return `<div class="col-sm">${content}</div>`;
+}
 
 function title(section) {
-    return row(col(`<h2>${section.value}</h2>`)); // не забывать ``
-};
+    return row(col(`<h2>${section.value}</h2>`));
+}
 
 function text(section) {
     return row(col(`<p>${section.value}</p>`));
-};
+}
 
 function columns(section) {
     const html = section.value.map(
         item => {
-            return col(`<p>${item}</p>`);
+            return col(`<p>${item}</p>`)
         }
     );
-    console.log(html)
-    return row(`${html.join('')}`);
+
+    return row(html.join(''));
+}
+
+function image(section) {
+    return row(col(`<img src="${section.value}" />`));
+} 
+
+const templates = {
+   title: title,
+   text: text,
+   columns: columns,
+   image: image,
 };
+
+sections.forEach(section => {
+    const template = templates[section.type];
+    const html = template(section);
+    $content.insertAdjacentHTML('beforeend', html)
+})
