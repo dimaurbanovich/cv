@@ -9,11 +9,6 @@ const sections = [
 
 const $content = document.querySelector('#cv');  // $ был в jquery но можно не использовать
 
-// sections.forEach( section => {
-//     let html = '<h2>Hello from JS</h2>';
-//     $content.insertAdjacentHTML('beforeend', html) // вставляется динамический контент 
-// })
-
 sections.forEach( section => {
     let html = '';
 
@@ -27,26 +22,28 @@ sections.forEach( section => {
         html = columns(section);
     };
 
-    $content.insertAdjacentHTML('beforeend', html);
-})
+    $content.insertAdjacentHTML('beforeend', html); // вставляется динамический контент 
+});
 
 function title(section) {
     return `
     <section class="row">
         <div class="col-sm">
-          <h2>${section.value}</h2>
+            <h2>${section.value}</h2>
         </div>
-      </section>`
-}
+    </section>
+    `;
+};
 
 function text(section) {
     return `
     <section class="row">
-    <div class="col-sm">
-      <p>${section.value}</p>
-    </div>
-  </section>`
-}
+        <div class="col-sm">
+            <p>${section.value}</p>
+        </div>
+    </section>
+    `;
+};
 
 function columns(section) {
     const html = section.value.map(
@@ -60,4 +57,4 @@ function columns(section) {
         ${html.join('')}
     </section>
     `;
-}
+};
