@@ -25,36 +25,28 @@ sections.forEach( section => {
     $content.insertAdjacentHTML('beforeend', html); // вставляется динамический контент 
 });
 
+function row(content) {
+    return `<section class="row">${content}</section>`
+};
+
+function col(content) {
+    return `<div class="col-sm">${content}</div>`
+};
+
 function title(section) {
-    return `
-    <section class="row">
-        <div class="col-sm">
-            <h2>${section.value}</h2>
-        </div>
-    </section>
-    `;
+    return row(col(`<h2>${section.value}</h2>`)); // не забывать ``
 };
 
 function text(section) {
-    return `
-    <section class="row">
-        <div class="col-sm">
-            <p>${section.value}</p>
-        </div>
-    </section>
-    `;
+    return row(col(`<p>${section.value}</p>`));
 };
 
 function columns(section) {
     const html = section.value.map(
         item => {
-            return `<div class="col-sm"><p>${item}</p></div>`
+            return col(`<p>${item}</p>`);
         }
     );
     console.log(html)
-    return `
-    <section class="row">
-        ${html.join('')}
-    </section>
-    `;
+    return row(`${html.join('')}`);
 };
