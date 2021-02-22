@@ -1,23 +1,26 @@
 {
   "name": "cv",
   "version": "1.0.0",
-  "description": "CV Project",
-  "main": "index.js",
+  "description": "<!-- **maslakoff/maslakoff** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
+  "main": "src/index.js",
   "scripts": {
     "dev": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dimaurbanovich/cv.git"
+    "url": "git+https://github.com/maslakoff/maslakoff.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Ihar Maslakou <igormaslakoff@gmail.com>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dimaurbanovich/cv/issues"
+    "url": "https://github.com/maslakoff/maslakoff/issues"
   },
-  "homepage": "https://github.com/dimaurbanovich/cv#readme",
+  "homepage": "https://github.com/maslakoff/maslakoff#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "model": "^6.0.1"
   }
 }
