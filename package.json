@@ -1,0 +1,23 @@
+{
+  "name": "cv",
+  "version": "1.0.0",
+  "description": "CV Project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimaurbanovich/cv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimaurbanovich/cv/issues"
+  },
+  "homepage": "https://github.com/dimaurbanovich/cv#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
