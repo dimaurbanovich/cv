@@ -1,3 +1,5 @@
+import { col, row } from '../templates'
+
 export class Block {
     constructor(type, value, options) {
         this.type = type;
@@ -11,9 +13,9 @@ export class Block {
      * По умолчанию, этот метод будет возвращать ошибку.
      * Вам нужно переопределить этот метод в каждом классе потомке.
      */
-    // toHTML() {
-    //     throw new Error('toHTML method was not implemented');
-    // }
+    toHTML() {
+        throw new Error('toHTML method was not implemented');
+    }
 }
 
 export class TitleBlock extends Block {
@@ -27,18 +29,45 @@ export class TitleBlock extends Block {
      * Перенесите сюда код из соответствующий ф-ции в template.js (ф-цию в templates.js можно убрать)
      * доступ к полю value можно получить с помощью this.value
      */
-    // toHTML() {
-    //     return `<div>Example</>`;
-    // }
+    toHTML() {
+        return row(col(`<h2>${this.value}</h2>`));
+    }
 }
 
 export class TextBlock extends Block {
     constructor(value, options) {
         super('text', value, options);
     }
+    toHTML() {
+        return row(col(`<p>${this.value}</p>`));
+    }    
 }
 
 /*
     @TODO шаг 1 - создать классы ColumnsBlock и ImageBlock
     добавить их в model.js
 */
+
+export class ColumnsBlock extends Block {
+    constructor(value, options) {
+        super('columns', value, options);
+    }
+    toHTML() {
+        const html = section.value.map(
+            item => {
+                return col(`<p>${item}</p>`)
+            }
+        );
+    
+        return row(html.join(''));
+    }  
+}
+
+export class ImageBlock extends Block {
+    constructor(value, options) {
+        super('image', value, options);
+    }
+    toHTML() {
+        return row(col(`<img src="${section.value}" />`));
+    }  
+}
