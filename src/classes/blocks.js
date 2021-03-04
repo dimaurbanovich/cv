@@ -72,4 +72,3 @@ export class ImageBlock extends Block {
         return row(col(`<img src="${this.value}" />`));
     }
 }
-

@@ -1,8 +1,8 @@
-import { sections } from "./model";
-import { links } from "./navbar";
+  
+import { sections, links } from "./model";
 import './styles/main.scss';
-import { Application } from './classes/app'
-import { Navbar } from "./classes/navbar";
+import { Application } from './classes/app';
+import { Navbar } from './classes/navbar';
 
 const app = new Application('#cv');
 app.render(sections);

@@ -1,18 +1,25 @@
 export class Navbar {
-    constructor(selector, href, icon, value) {
-        this.$navbar = document.querySelector(selector);
-        this.href = href;
-        this.icon = icon;
-        this.value = value;
+    constructor(selector) {
+        this.$navbar= document.querySelector(selector);     
     }
-    render(links) {
-        links.forEach(link => {
-            this.$navbar.insertAdjacentHTML('beforeend', this.getNavigationLink())
-        })
-    }
-    getNavigationLink() {
-        return `<li><a href="${this.href}" class="nav-link scrollto"><i class="bi ${this.icon}"></i> <span>${this.value}</span></a></li>`;
-    }
-    
 
+    //
+    render(links) {
+        const $navbarUl = document.createElement('ul');
+        this.$navbar.append($navbarUl);
+        links.forEach(link => {
+            $navbarUl.insertAdjacentHTML('beforeend', link.toHtml())
+        });
+    }
 }
+
+
+
+// links.forEach(link => {
+//     let html = navigation(link);
+//     $navbarUl.insertAdjacentHTML('beforeend', html)
+// });
+
+// function navigation(link) {
+//     return `<li><a href="${link.href}" class="nav-link scrollto"><i class="bi ${link.icon}"></i> <span>${link.value}</span></a></li>`;
+// }
